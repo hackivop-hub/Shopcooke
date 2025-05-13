@@ -1,66 +1,192 @@
+      
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Shop កូនខ្មែរ</title>
+  <title>SimpleShop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: sans-serif; background: #f9f9f9; }
+
+    nav {
+      background: #2c3e50;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    section {
-      padding: 40px 20px;
-      background-color: #f9f9f9;
+
+    nav .logo {
+      font-size: 22px;
+      font-weight: bold;
     }
-    h1 {
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: #2c3e50;
+        display: none;
+        text-align: center;
+      }
+
+      nav input[type=checkbox]:checked ~ ul {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    #home {
+      background-image: url('https://static.vecteezy.com/system/resources/previews/008/311/935/non_2x/the-illustration-graphic-consists-of-abstract-background-with-a-blue-gradient-dynamic-shapes-composition-eps10-perfect-for-presentation-background-website-landing-page-wallpaper-vector.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      margin-bottom: 30px;
+      padding: 20px;
     }
+
+    #home h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    #home p {
+      font-size: 20px;
+      max-width: 600px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    }
+
+    section {
+      padding: 30px;
+    }
+
     .row {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 20px;
+      justify-content: center;
     }
+
     .column {
-      flex: 1 1 300px;
+      background: white;
+      flex: 1 1 calc(33.333% - 20px);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      min-width: 250px;
       max-width: 300px;
-      background-color: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       text-align: center;
     }
+
     .column img {
       width: 100%;
       border-radius: 8px;
       margin-bottom: 10px;
     }
+
+    .column h3 {
+      margin-bottom: 10px;
+    }
+
+    .column p {
+      margin-bottom: 10px;
+    }
+
     .column button {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      background-color: #28a745;
+      background: #007bff;
       color: white;
+      padding: 10px 20px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 16px;
     }
+
     .column button:hover {
-      background-color: #218838;
+      background: #0056b3;
     }
+
+    @media (max-width: 768px) {
+      .column {
+        flex: 1 1 100%;
+      }
+    }
+
     footer {
+      background: #2c3e50;
+      color: white;
       text-align: center;
       padding: 20px;
-      background-color: #222;
-      color: white;
     }
   </style>
 </head>
 <body>
 
-  <!-- Product Section -->
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Shop</div>
+    <label for="menu-toggle" class="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
+    </label>
+    <input type="checkbox" id="menu-toggle" style="display: none;">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <h1>Welcome to Shop</h1>
+    <p>Your simple and clean online store — where shopping is easy and affordable!</p>
+  </section>
+
+  <!-- Products Section -->
   <section id="products">
     <h1>Our Products</h1>
     <div class="row">
@@ -82,10 +208,22 @@
         <p>Price: $60</p>
         <a href="https://t.me/Tolamvp" target="_blank"><button>Download</button></a>
       </div>
+      <div class="column">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFK9Zaa7GrtwbUa3M9S-ZKDBZnMZ_RbFRCrA&s" alt="Product D">
+        <h3>Product D</h3>
+        <p>Price: $80</p>
+        <a href="https://t.me/Tolamvp" target="_blank"><button>Download</button></a>
+      </div>
+      <div class="column">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFK9Zaa7GrtwbUa3M9S-ZKDBZnMZ_RbFRCrA&s" alt="Product E">
+        <h3>Product E</h3>
+        <p>Price: $100</p>
+        <a href="https://t.me/Tolamvp" target="_blank"><button>Download</button></a>
+      </div>
     </div>
   </section>
 
-  <!-- Footer Section -->
+  <!-- Footer -->
   <footer>
     <p>Shop កូនខ្មែរ</p>
   </footer>
