@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Takeo MC Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: sans-serif; background: #f9f9f9; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+    }
 
     nav {
       background: #2c3e50;
@@ -15,26 +23,28 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+      z-index: 10;
     }
 
-    nav .logo {
+    .logo {
       font-size: 22px;
       font-weight: bold;
     }
 
-    nav ul {
+    ul {
       list-style: none;
       display: flex;
       gap: 20px;
     }
 
-    nav ul li a {
+    ul li a {
       color: white;
       text-decoration: none;
       font-weight: 500;
     }
 
-    nav ul li a:hover {
+    ul li a:hover {
       text-decoration: underline;
     }
 
@@ -51,20 +61,30 @@
       margin: 4px 0;
     }
 
+    input[type="checkbox"] {
+      display: none;
+    }
+
     @media (max-width: 768px) {
       nav ul {
         flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 200px;
+        height: 100vh;
         background: #2c3e50;
-        display: none;
-        text-align: center;
+        padding-top: 60px;
+        transition: left 0.3s ease;
       }
 
-      nav input[type=checkbox]:checked ~ ul {
-        display: flex;
+      nav input[type="checkbox"]:checked ~ ul {
+        left: 0;
+      }
+
+      nav ul li {
+        padding: 15px 20px;
+        border-bottom: 1px solid #3d566e;
       }
 
       .menu-toggle {
@@ -73,7 +93,7 @@
     }
 
     #home {
-      background-image: url('https://static.planetminecraft.com/files/resource_media/screenshot/1416/image015_lrg.jpg');
+      background-image: url("https://static.planetminecraft.com/files/resource_media/screenshot/1416/image015_lrg.jpg");
       background-size: cover;
       background-position: center;
       height: 80vh;
@@ -89,13 +109,13 @@
     #home h1 {
       font-size: 48px;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
 
     #home p {
       font-size: 20px;
       max-width: 600px;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
     }
 
     section {
@@ -114,7 +134,7 @@
       flex: 1 1 calc(25% - 20px);
       padding: 15px;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       min-width: 200px;
       max-width: 220px;
       text-align: center;
@@ -173,7 +193,6 @@
   </style>
 </head>
 <body>
-
   <!-- Navbar -->
   <nav>
     <div class="logo">Takeo MC</div>
@@ -182,10 +201,11 @@
       <div></div>
       <div></div>
     </label>
-    <input type="checkbox" id="menu-toggle" style="display: none;">
+    <input type="checkbox" id="menu-toggle" />
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#products">Products</a></li>
+      <li><a href="Modmc.html">Mod Minecraft</a></li>
     </ul>
   </nav>
 
@@ -208,7 +228,7 @@
       
       <div class="column">
         <img src="https://cdn.iconscout.com/icon/free/png-256/free-microsoft-store-logo-icon-download-in-svg-png-gif-file-formats--windows-logos-brands-pack-icons-116270.png?f=webp&w=256" alt="Product C">
-        <h3>Tool Minecraft Windown Free</h3>
+        <h3>Tool Minecraft Windows Free</h3>
         <p>Price: Free</p>
         <a href="https://www.mediafire.com/file/2oz4n681byr26r4/Minecraft_Full_Unlock.rar/file" target="_blank"><button style="background-color: green;">Download</button></a>
       </div>
@@ -240,6 +260,5 @@
   <footer>
     <p>Shop &copy; TLower MC</p>
   </footer>
-
 </body>
 </html>
