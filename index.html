@@ -33,6 +33,22 @@
       font-weight: bold;
     }
 
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    ul li a:hover {
+      text-decoration: underline;
+    }
+
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -50,57 +66,35 @@
       display: none;
     }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    ul li a:hover {
-      text-decoration: underline;
-    }
-
     #searchBox {
       padding: 8px 12px;
       border-radius: 4px;
       border: none;
       font-size: 14px;
-      z-index: 11;
-      position: relative;
+      margin: 10px auto;
+      display: block;
+      max-width: 90%;
     }
 
     @media (max-width: 768px) {
-      .nav-right {
+      nav {
         flex-direction: column;
         align-items: flex-start;
-        width: 100%;
       }
 
       nav ul {
         flex-direction: column;
         position: fixed;
-        top: 0;
+        top: 60px;
         left: -250px;
         width: 200px;
-        height: 100vh;
+        height: calc(100vh - 60px);
         background: #2c3e50;
-        padding-top: 60px;
+        padding-top: 20px;
         transition: left 0.3s ease;
       }
 
-      nav input[type="checkbox"]:checked ~ .nav-right ul {
+      nav input[type="checkbox"]:checked ~ ul {
         left: 0;
       }
 
@@ -111,11 +105,6 @@
 
       .menu-toggle {
         display: flex;
-      }
-
-      #searchBox {
-        margin: 10px 0 0 15px;
-        width: calc(100% - 30px);
       }
     }
 
@@ -242,17 +231,15 @@
       <div></div>
     </label>
     <input type="checkbox" id="menu-toggle" />
-
-    <!-- Group menu and search -->
-    <div class="nav-right">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="Modmc.html">Mod Minecraft</a></li>
-      </ul>
-      <input type="text" id="searchBox" placeholder="Search products..." />
-    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="Modmc.html">Mod Minecraft</a></li>
+    </ul>
   </nav>
+
+  <!-- Moved Search Box Here -->
+  <input type="text" id="searchBox" placeholder="Search products..." />
 
   <!-- Home Section -->
   <section id="home">
@@ -307,11 +294,12 @@
     <p>Shop &copy; TLower MC</p>
   </footer>
 
-  <!-- Search Script -->
+  <!-- Search Functionality -->
   <script>
     const searchBox = document.getElementById("searchBox");
     const productColumns = document.querySelectorAll(".column");
     const noResults = document.getElementById("noResults");
+    const homeSection = document.getElementById("home");
 
     searchBox.addEventListener("input", () => {
       const query = searchBox.value.toLowerCase();
@@ -330,6 +318,12 @@
       });
 
       noResults.style.display = matchFound ? "none" : "block";
+
+      if (query.trim() !== "") {
+        homeSection.style.display = "none";
+      } else {
+        homeSection.style.display = "flex";
+      }
     });
   </script>
 </body>
