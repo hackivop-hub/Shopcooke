@@ -24,7 +24,7 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
-      z-index: 10;
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -65,6 +65,14 @@
       display: none;
     }
 
+    #searchBox {
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: none;
+      font-size: 14px;
+      margin-left: 20px;
+    }
+
     @media (max-width: 768px) {
       nav ul {
         flex-direction: column;
@@ -89,6 +97,11 @@
 
       .menu-toggle {
         display: flex;
+      }
+
+      #searchBox {
+        margin-top: 10px;
+        width: 100%;
       }
     }
 
@@ -157,9 +170,10 @@
         flex: 1 1 100%;
       }
     }
-  .dele{
-        color: aliceblue;
-        text-decoration: none;
+
+    .dele {
+      color: aliceblue;
+      text-decoration: none;
     }
 
     footer {
@@ -185,6 +199,7 @@
       <li><a href="index.html#products">Products</a></li>
       <li><a href="Modmc.html">Mod Minecraft</a></li>
     </ul>
+    <input type="text" id="searchBox" placeholder="Search mods..." />
   </nav>
 
   <!-- Mod Minecraft Section -->
@@ -218,5 +233,25 @@
   <footer>
     <p>Shop &copy; TLower MC</p>
   </footer>
+
+  <!-- Search Script -->
+  <script>
+    const searchBox = document.getElementById("searchBox");
+    const modColumns = document.querySelectorAll(".column");
+
+    searchBox.addEventListener("input", () => {
+      const query = searchBox.value.toLowerCase();
+
+      modColumns.forEach(column => {
+        const title = column.querySelector("h3").textContent.toLowerCase();
+        const price = column.querySelector("p").textContent.toLowerCase();
+        if (title.includes(query) || price.includes(query)) {
+          column.style.display = "block";
+        } else {
+          column.style.display = "none";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
