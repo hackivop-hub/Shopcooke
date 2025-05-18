@@ -297,6 +297,7 @@
     const searchBox = document.getElementById("searchBox");
     const productColumns = document.querySelectorAll(".column");
     const noResults = document.getElementById("noResults");
+    const homeSection = document.getElementById("home");
 
     searchBox.addEventListener("input", () => {
       const query = searchBox.value.toLowerCase();
@@ -315,6 +316,13 @@
       });
 
       noResults.style.display = matchFound ? "none" : "block";
+
+      // Hide or show home section based on search input
+      if (query.trim() !== "") {
+        homeSection.style.display = "none";
+      } else {
+        homeSection.style.display = "flex";
+      }
     });
   </script>
 </body>
