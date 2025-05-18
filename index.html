@@ -72,6 +72,8 @@
       border: none;
       font-size: 14px;
       margin-left: 20px;
+      z-index: 11;
+      position: relative;
     }
 
     @media (max-width: 768px) {
@@ -209,6 +211,14 @@
       text-align: center;
       padding: 20px;
     }
+
+    #noResults {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      color: red;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -238,7 +248,7 @@
   <!-- Products Section -->
   <section id="products">
     <h1>ផលិតផល</h1>
-    <div class="row">
+    <div class="row" id="productContainer">
       <div class="column">
         <img src="https://i.namu.wiki/i/UNs30VWyGq6rzrn19mmqW_9Z2tb-3eB3_odSyBH7NkK-T2Xi_X1-t5FXrnYZSaIW1gtNNxulG8ndZFRCowJkNSNy9hsiWfebV3D1SJNzALiTtFPDIfkt0EYeUdLQ2i75GsHR61Xgub3JLe0gVvDzug.webp" alt="Product A">
         <h3>Minecraft old v 0.85 Apk</h3>
@@ -274,6 +284,7 @@
         <a href="https://t.me/Tolamvp" target="_blank"><button>Chat Telegram</button></a>
       </div>
     </div>
+    <p id="noResults">No matching products found.</p>
   </section>
 
   <!-- Footer -->
@@ -285,19 +296,25 @@
   <script>
     const searchBox = document.getElementById("searchBox");
     const productColumns = document.querySelectorAll(".column");
+    const noResults = document.getElementById("noResults");
 
     searchBox.addEventListener("input", () => {
       const query = searchBox.value.toLowerCase();
+      let matchFound = false;
 
       productColumns.forEach(column => {
         const name = column.querySelector("h3").textContent.toLowerCase();
         const price = column.querySelector("p").textContent.toLowerCase();
+
         if (name.includes(query) || price.includes(query)) {
           column.style.display = "block";
+          matchFound = true;
         } else {
           column.style.display = "none";
         }
       });
+
+      noResults.style.display = matchFound ? "none" : "block";
     });
   </script>
 </body>
