@@ -141,18 +141,17 @@
     .row {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
       justify-content: center;
+      gap: 20px;
     }
 
     .column {
       background: white;
-      flex: 1 1 calc(25% - 20px);
+      flex: 1 1 calc(33.333% - 20px); /* 3 in a row on desktop */
       padding: 15px;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      min-width: 200px;
-      max-width: 220px;
+      max-width: 300px;
       text-align: center;
     }
 
@@ -190,13 +189,13 @@
 
     @media (max-width: 768px) {
       .column {
-        flex: 1 1 45%;
+        flex: 1 1 calc(50% - 20px); /* 2 per row on tablet/mobile */
       }
     }
 
     @media (max-width: 480px) {
       .column {
-        flex: 1 1 100%;
+        flex: 1 1 calc(50% - 20px); /* 2 per row on small mobile */
       }
     }
 
@@ -238,7 +237,7 @@
     </ul>
   </nav>
 
-  <!-- Moved Search Box Here -->
+  <!-- Search Box -->
   <input type="text" id="searchBox" placeholder="Search products..." />
 
   <!-- Home Section -->
@@ -251,6 +250,7 @@
   <section id="products">
     <h1>ផលិតផល</h1>
     <div class="row" id="productContainer">
+      <!-- Product Cards -->
       <div class="column">
         <img src="pic/mc.webp" alt="Product A">
         <h3>Minecraft old v 1.21.80 Apk</h3>
@@ -277,7 +277,7 @@
         <img src="pic/Capcutlogo.jpg" alt="Product E">
         <h3>Capcut old version (not Pro)</h3>
         <p>Price: Free</p>
-        <a href="https://www.mediafire.com/file/sy3naue5cwdfttx/Capcut-+Takeomc+v+5.8.0.apkm/file" target="_blank"><button>Dowload</button></a>
+        <a href="https://www.mediafire.com/file/sy3naue5cwdfttx/Capcut-+Takeomc+v+5.8.0.apkm/file" target="_blank"><button>Download</button></a>
       </div>
 
       <div class="column">
@@ -286,6 +286,7 @@
         <p>Price: 0.99$</p>
         <a href="https://t.me/Tolamvp" target="_blank"><button>Chat Telegram</button></a>
       </div>
+
       <div class="column">
         <img src="pic/69146964.png" alt="">
         <h3>Pojavluncher</h3>
@@ -301,7 +302,7 @@
     <p>Shop &copy; TLower MC</p>
   </footer>
 
-  <!-- Search Functionality -->
+  <!-- Search Script -->
   <script>
     const searchBox = document.getElementById("searchBox");
     const productColumns = document.querySelectorAll(".column");
@@ -325,13 +326,9 @@
       });
 
       noResults.style.display = matchFound ? "none" : "block";
-
-      if (query.trim() !== "") {
-        homeSection.style.display = "none";
-      } else {
-        homeSection.style.display = "flex";
-      }
+      homeSection.style.display = query.trim() !== "" ? "none" : "flex";
     });
   </script>
 </body>
-</html>
+  </html>
+          
